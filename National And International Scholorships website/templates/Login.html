@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+         
+</head>
+<body style="background-color:#646FD4;">
+    <div id="introText">
+        <text style="float:left;text-align:right;margin-top:140px;margin-right: -10px; font-size:72px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color:whitesmoke;">Scholorship</text>
+        <text style="float:left;text-align:right;margin-top:250px;margin-left: -260px; font-size:72px;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color:whitesmoke;">Portal</text>
+    </div>
+
+    <div class="container">
+        <div class="forms">                   
+            <div class="form login">
+                <span class="title" style="font-size: 30px;">Login</span>
+
+                <form method="post" action="/LoginValidate">
+                    <div class="input-field">
+                        <input type="text" placeholder="Enter your name" name="LgName" required>
+                        <i class="uil uil-user"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" class="password" name="LgPassword" placeholder="Enter your password" required>
+                        <i class="uil uil-lock icon"></i>
+                    </div>
+
+                    <div class="input-field button">
+                        <input type="submit" value="Login Now">
+                    </div>
+                </form>
+
+                <div class="login-signup">
+                    <span class="text" style="font-size: 16px;">Not a member?
+                        <a href='/Register' class="text signup-link" style="font-size: 16px;">Signup now</a>
+                    </span>
+                </div>
+            </div>        
+        </div>
+    </div>
+
+
+</body>
+</html>

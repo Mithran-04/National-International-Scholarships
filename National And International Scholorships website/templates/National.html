@@ -1,0 +1,104 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National</title>
+    <style>
+        table{
+            width:100%;
+             }
+             /* td{
+                 text-align: center;
+                    height: 50px;
+                    vertical-align: bottom;
+             }         */
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <center><h1 style="background-color:black;color:white">National Scholarships</h1></center>
+
+<table style="border-spacing:15px" class="table table-success table-striped"> 
+    <thead> 
+    <tr> 
+        <th>Scholarship</th>
+        <th style="width:40%">Description</th> 
+        <th>Start date</th>
+        <th>End date</th>
+        <th>Link</th>
+        <th>Applied</th>
+    </tr> 
+    </thead> 
+    <tbody> 
+        {% for row in value %}  
+            <tr> 
+                <td>{{row[0]}}</td> 
+                <td>{{row[1]}}</td> 
+                <td>{{row[2]}}</td>
+                <td>{{row[3]}}</td>
+                <td><a href={{row[4]}}>{{row[4]}}</a></td> 
+                <td>
+                    <div class="form-control">
+                        <input type="checkbox" id="allcb" class="chkbox" onclick="uncheckall()" />
+                        <label for="allcb" />
+                    </div>
+                </td>
+
+            </tr>
+        {% endfor %} 
+    </tbody> 
+</table>
+<div class="ButtonDone" align="right">
+        <a class="btn btn-lg btn-success">DONE</a>
+</div>
+
+
+<script>
+
+    $(document).ready(function(){
+
+       $(".table table-success table-striped").on('click',function(){
+           var currentRow=$(this).closest("tr");
+           var col1=currentRow.find("td:eq(0)").html();
+           var col2=currentRow.find("td:eq(1)").html();
+            var col3=currentRow.find("td:eq(2)").html();
+            var col4=currentRow.find("td:eq(3)").html();
+        //    alert(col1);
+       });
+
+       $(".ButtonDone").on('click',function(){
+           var aData=[];
+           $(".table-striped tbody tr").each(function(){
+               var currentRow=$(this);
+               var col1=currentRow.find("td:eq(0)").html();
+               var col2=currentRow.find("td:eq(1)").html();
+               var col3=currentRow.find("td:eq(2)").html();
+               var col4=currentRow.find("td:eq(3)").html();
+               var obj={};
+               obj.col1=col1;
+               obj.col2=col2;
+               obj.col3=col3
+               obj.col4=col4;
+               if(currentRow.find(".chkbox").is(":checked")){
+                aData.push(obj)
+               }
+
+           })
+        $.getJSON('/array2python', {
+        wordlist: JSON.stringify(aData)
+         }, function(data){
+        console.log(data.result)
+        $( "#result" ).text(data.result);
+    })
+       });
+});
+
+</script>
+</body>
+</html>

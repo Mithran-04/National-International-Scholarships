@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body style="background-color:#646FD4;">
+    <div id="introText">
+        <text style="float:left;text-align:right;margin-top:140px;margin-right: -10px; font-size:72px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color:whitesmoke;">Scholorship</text>
+        <text style="float:left;text-align:right;margin-top:250px;margin-left: -260px; font-size:72px;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color:whitesmoke;">Portal</text>
+    </div>
+    
+    <div class="container">
+        <div class="forms">                   
+            <div class="form login">
+                <span class="title" style="font-size: 28px;">Register</span>
+
+                <form method="post" action="/RegisterValidate">
+                    <div class="input-field">
+                        <input type="text" placeholder="Enter your name" name="RName" required>
+                        <i class="uil uil-user"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" placeholder="Enter your email" name="REmail" required>
+                        <i class="uil uil-envelope icon"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" class="password" placeholder="password" name="RPassword" required>
+                        <i class="uil uil-lock icon"></i>
+                    </div>                        
+                    <div class="input-field button">
+                        <input type="submit" value="Register Now">
+                    </div>
+                </form>
+
+                <div class="login-signup">
+                    <span class="text">
+                        <a href='/' class="text Back-link">Back</a>
+                    </span>
+                </div>
+            </div>        
+        </div>
+    </div>
+</body>
+</html>
